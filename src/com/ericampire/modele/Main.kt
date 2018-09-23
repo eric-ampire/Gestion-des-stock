@@ -1,7 +1,15 @@
 package com.ericampire.modele
 
+import java.io.Console
+
+var choixMenu: Int? = null
+
 fun main(args: Array<String>) {
     afficherMenu()
+}
+
+fun clearTerminal() {
+    Runtime.getRuntime().exec("clear")
 }
 
 fun afficherMenu() {
@@ -16,4 +24,13 @@ fun afficherMenu() {
     """.trimIndent()
 
     print(menu)
+
+    try {
+        choixMenu = readLine()!!.toInt()
+    } catch (e: Exception) {
+
+        clearTerminal()
+        print("VALEUR INCORRECT !!! \n\n")
+        print(menu)
+    }
 }
