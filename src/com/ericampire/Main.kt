@@ -1,11 +1,13 @@
-package com.ericampire.modele
+package com.ericampire
 
+import com.ericampire.modele.ArticleDOA
 import java.io.Console
 
 var choixMenu: Int? = null
 
 fun main(args: Array<String>) {
-    afficherMenu()
+    ArticleDOA().getAllItem().forEach { println(it)}
+    //afficherMenu()
 }
 
 fun clearTerminal() {
@@ -32,5 +34,36 @@ fun afficherMenu() {
         clearTerminal()
         print("VALEUR INCORRECT !!! \n\n")
         print(menu)
+    }
+}
+
+fun verifierChoice() {
+    when(choixMenu) {
+
+        1 -> {
+            print("Donner le numero de reference : ")
+        }
+
+        2 -> {
+
+        }
+
+        3 -> {
+
+        }
+
+        4 -> {
+
+        }
+
+        5 -> {
+
+        }
+
+        6 -> {
+            clearTerminal()
+            print("Au revoir !!!")
+            System.exit(0)
+        }
     }
 }
