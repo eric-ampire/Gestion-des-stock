@@ -1,7 +1,6 @@
 package com.ericampire.modele
 
 import com.ericampire.Connexion
-import com.ericampire.clearTerminal
 
 class ArticleDOA : DOA<Article> {
     private val connexion = Connexion.getConnexion()
