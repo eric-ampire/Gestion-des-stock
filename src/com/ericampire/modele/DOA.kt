@@ -1,6 +1,7 @@
 package com.ericampire.modele
 
 import com.ericampire.Connexion
+import com.ericampire.clearTerminal
 
 class ArticleDOA : DOA<Article> {
     private val connexion = Connexion.getConnexion()
@@ -25,13 +26,20 @@ class ArticleDOA : DOA<Article> {
             setInt(1, id)
         }
 
-        preparedStatement.execute()
+        clearTerminal()
+        if (preparedStatement.execute()) {
+
+            println("L'article a etait bien supprimer !!!")
+        } else {
+
+            println("Aucun article n'a etait supprimer !!!")
+        }
     }
 
     override fun update(item: Article) {
 
         val preparedStatement = connexion?.prepareStatement(
-                "UPDATE `article` SET numero` = ?, prix = ?, `quantity` = ?, `nom` = ? WHERE article.numero = ?")
+                "UPDATE article SET numero = ?, prix = ?, quantity = ?, nom = ? WHERE article.numero = ?")
 
         with(preparedStatement!!) {
             setInt(1, item.numero)
