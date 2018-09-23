@@ -46,11 +46,13 @@ fun verifierChoice() {
 
         1 -> {
             print("Donner le numero de reference : ")
+            val numero = readLine()!!.toInt()
+
             clearTerminal()
             println("""N   Nom     Prix    Quantity""")
 
             articleDOA.getAllItem().forEach {
-                if (it.numero == readLine()?.toInt()) {
+                if (it.numero == numero) {
                     val chaine = """${it.numero}     ${it.nom}    ${it.prix}     ${it.quantity}"""
                     println(chaine)
                 }
