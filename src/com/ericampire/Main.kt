@@ -4,10 +4,10 @@ import com.ericampire.modele.ArticleDOA
 import java.io.Console
 
 var choixMenu: Int? = null
+val articleDOA = ArticleDOA()
 
 fun main(args: Array<String>) {
-    ArticleDOA().getAllItem().forEach { println(it)}
-    //afficherMenu()
+    afficherMenu()
 }
 
 fun clearTerminal() {
@@ -35,6 +35,10 @@ fun afficherMenu() {
         print("VALEUR INCORRECT !!! \n\n")
         print(menu)
     }
+
+    if (choixMenu != null) {
+        verifierChoice()
+    }
 }
 
 fun verifierChoice() {
@@ -49,6 +53,16 @@ fun verifierChoice() {
         }
 
         3 -> {
+            try {
+                print("Donner le numero de l'article :")
+                articleDOA.delete(readLine()!!.toInt())
+
+            } catch (e: Exception) {
+
+                clearTerminal()
+                print("VALEUR INCORRECT !!! \n\n")
+                afficherMenu()
+            }
 
         }
 
@@ -57,7 +71,14 @@ fun verifierChoice() {
         }
 
         5 -> {
+            clearTerminal()
+            println("""N   Nom     Prix    Quantity""")
 
+            articleDOA.getAllItem().forEach {
+
+                val chaine = """${it.numero}     ${it.nom}    ${it.prix}     ${it.quantity}"""
+                println(chaine)
+            }
         }
 
         6 -> {
