@@ -60,7 +60,11 @@ fun verifierChoice() {
         }
 
         2 -> {
+            print("Donner le numero de reference : ")
+            val numero = readLine()!!.toInt()
 
+            clearTerminal()
+            articleDOA.delete(numero)
         }
 
         3 -> {
